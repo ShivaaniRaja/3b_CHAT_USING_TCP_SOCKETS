@@ -8,34 +8,35 @@ To write a python program for creating Chat using TCP Sockets Links.
  server
 4. Send and receive the message using the send function in socket.
 ## PROGRAM
+
+#client.py
 ```
-client.py
-import socket 
-s=socket.socket() 
-s.connect(('localhost',8000)) 
-while True: 
-    msg=input("Client > ") 
-    s.send(msg.encode()) 
+import socket
+s=socket.socket()
+s.connect(('localhost',8000))
+while True:
+    msg=input("Client > ")
+    s.send(msg.encode())
     print("Server > ",s.recv(1024).decode())
 ```
+#server.py
 ```
-server.py
-import socket 
-s=socket.socket() 
-s.bind(('localhost',8000)) 
-s.listen(5) 
-c,addr=s.accept() 
-while True: 
-            ClientMessage=c.recv(1024).decode() 
-            print("Client > ",ClientMessage) 
-            msg=input("Server > ") 
-            c.send(msg.encode())
+import socket
+s=socket.socket()
+s.bind(('localhost',8000))
+s.listen(5)
+c,addr=s.accept()
+while True:
+    ClientMessage=c.recv(1024).decode()
+    print("Client > ",ClientMessage)
+    msg=input("Server > ")
+    c.send(msg.encode())
 ```
             
 ## OUPUT
 
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/e34e7688-8655-4650-9e1e-e0e6b8eb60a1" />
 
-<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/ef1f22d4-1b8d-4cbb-9059-2fce75853b8c" />
 
 
 
